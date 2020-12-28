@@ -1,9 +1,10 @@
 import React, { useCallback, useRef } from 'react';
-import { Image, View,ScrollView, KeyboardAvoidingView, Platform, TextInput, Alert } from 'react-native';
+import {
+  Image, View, ScrollView, KeyboardAvoidingView, Platform, TextInput, Alert,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
 import * as Yup from 'yup';
-
 
 import { Form } from '@unform/mobile';
 import { FormHandles } from '@unform/core';
@@ -15,7 +16,6 @@ import getValidationErrors from '../../utils/getValidationErrors';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 
-
 import logoImg from '../../assets/logo.png';
 
 import {
@@ -24,7 +24,7 @@ import {
   ForgotPassword,
   ForgotPasswordText,
   CreateAccountButton,
-  CreateAccountButtonText
+  CreateAccountButtonText,
 } from './styles';
 
 interface SignInFormData {
@@ -38,8 +38,7 @@ const SignIn: React.FC = () => {
 
   const navigation = useNavigation();
 
-  const { signIn } =useAuth();
-
+  const { signIn } = useAuth();
 
   const handleSignIn = useCallback(
     async (data: SignInFormData) => {
@@ -60,7 +59,6 @@ const SignIn: React.FC = () => {
           email: data.email,
           password: data.password,
         });
-
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
@@ -72,7 +70,7 @@ const SignIn: React.FC = () => {
         Alert.alert(
           'Erro na autenticação',
           'Ocorreu um erro ao fazer o login, cheque as credenciais',
-          );
+        );
       }
     },
     [signIn],
@@ -81,13 +79,13 @@ const SignIn: React.FC = () => {
   return (
     <>
       <KeyboardAvoidingView
-      style={{ flex:1}}
-      behavior={Platform.OS === 'ios' ? 'padding': undefined}
-      enabled
+        style={{ flex: 1 }}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        enabled
       >
         <ScrollView
-        keyboardShouldPersistTaps="handled"
-        contentContainerStyle={{flex:1}}
+          keyboardShouldPersistTaps="handled"
+          contentContainerStyle={{ flex: 1 }}
         >
           <Container>
             <Image source={logoImg} />
@@ -96,18 +94,18 @@ const SignIn: React.FC = () => {
               <Title>Faça seu logon</Title>
             </View>
 
-            <Form ref={formRef} onSubmit={handleSignIn} >
+            <Form ref={formRef} onSubmit={handleSignIn}>
               <Input
-              autoCorrect={false}
-              autoCapitalize= 'none'
-              keyboardType= "email-address"
-              name="email"
-              icon="mail"
-              placeholder="E-mail"
-              returnKeyType="next"
-              onSubmitEditing={() => {
-                passwordInputRef.current?.focus();
-              }}
+                autoCorrect={false}
+                autoCapitalize="none"
+                keyboardType="email-address"
+                name="email"
+                icon="mail"
+                placeholder="E-mail"
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  passwordInputRef.current?.focus();
+                }}
               />
 
               <Input
@@ -117,17 +115,17 @@ const SignIn: React.FC = () => {
                 placeholder="Senha"
                 secureTextEntry
                 returnKeyType="send"
-                onSubmitEditing={() =>{
+                onSubmitEditing={() => {
                   formRef.current?.submitForm();
-                  }}
+                }}
               />
 
               <Button
                 onPress={() => {
-                formRef.current?.submitForm();
+                  formRef.current?.submitForm();
                 }}
               >
-                  Entrar
+                Entrar
               </Button>
             </Form>
             <ForgotPassword>
@@ -140,13 +138,13 @@ const SignIn: React.FC = () => {
       </KeyboardAvoidingView>
 
       <CreateAccountButton onPress={() => navigation.navigate('SignUp')}>
-        <Icon name="log-in" size={20} color="#ff9000"/>
+        <Icon name="log-in" size={20} color="#ff9000" />
         <CreateAccountButtonText>
           Criar uma conta
         </CreateAccountButtonText>
       </CreateAccountButton>
     </>
-  )
-}
+  );
+};
 
 export default SignIn;
