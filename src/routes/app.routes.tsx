@@ -6,15 +6,13 @@ import Profile from '../pages/Profile';
 import CreateAppointment from '../pages/CreateAppointment';
 import AppointmentCreated from '../pages/AppointmentCreated';
 
-
-
 const App = createStackNavigator();
 
 const AppRoutes: React.FC = () => (
   <App.Navigator
     screenOptions={{
-      headerShown:false,
-      cardStyle: { backgroundColor:'#312e38' },
+      headerShown: false,
+      cardStyle: { backgroundColor: '#312e38' },
     }}
 
   >
@@ -24,6 +22,6 @@ const AppRoutes: React.FC = () => (
 
     <App.Screen name="Profile" component={Profile} />
   </App.Navigator>
-)
+);
 
 export default AppRoutes;

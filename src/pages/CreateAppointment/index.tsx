@@ -189,7 +189,6 @@ const CreateAppointment: React.FC = () => {
 
           {showDatePicker && (
           <DateTimePicker
-          // eslint-disable-next-line react/jsx-props-no-spreading
             {...(Platform.OS === 'ios' && { textColor: '#f4ede8' })}
             mode="date"
             display={Platform.OS === 'android' ? 'calendar' : 'spinner'}

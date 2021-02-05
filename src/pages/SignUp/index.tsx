@@ -63,11 +63,10 @@ const SignUp: React.FC = () => {
 
         Alert.alert(
           'Cadastro realizado com sucesso.',
-          'Você já pode fazer login na aplicação.'
-        )
+          'Você já pode fazer login na aplicação.',
+        );
 
-        navigation.goBack()
-
+        navigation.goBack();
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
@@ -92,13 +91,13 @@ const SignUp: React.FC = () => {
   return (
     <>
       <KeyboardAvoidingView
-      style={{ flex:1 }}
-      behavior={Platform.OS === 'ios' ? 'padding': undefined}
-      enabled
+        style={{ flex: 1 }}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        enabled
       >
         <ScrollView
-        keyboardShouldPersistTaps="handled"
-        contentContainerStyle={{ flex:1 }}
+          keyboardShouldPersistTaps="handled"
+          contentContainerStyle={{ flex: 1 }}
         >
           <Container>
             <Image source={logoImg} />
@@ -150,7 +149,7 @@ const SignUp: React.FC = () => {
       </KeyboardAvoidingView>
 
       <BackToSignIn onPress={() => navigation.goBack()}>
-        <Icon name="arrow-left" size={20} color="#fff"/>
+        <Icon name="arrow-left" size={20} color="#fff" />
         <BackToSignInText>
           Voltar para logon
         </BackToSignInText>
